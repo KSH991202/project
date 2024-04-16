@@ -1,0 +1,679 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(245, 243, 242);
+    /* font-family: 'REM', sans-serif; */
+    overflow-x: hidden;
+    font-family: 'Dokdo', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Poor Story', cursive;
+
+}
+
+/* 섹션//////////////////////////////////////////////////////////////// */
+#section1 {
+    height: 140px;
+    background-color: white;
+}
+
+
+#section2 {
+    height: 700px;
+}
+.mainImg{
+    position: absolute;
+    background-size: cover;
+    /* backdrop-filter: blur(10px);
+    box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.5);
+    filter: blur(15px); */
+
+    width: 100%;
+    height: 700px;
+    z-index: -10;
+}
+
+
+
+#section3 {
+    height: 1200px;
+    margin-top: 80px;
+    /* background-color: white; */
+
+}
+
+#section4,
+#section5 {
+    /* background-color: white; */
+    margin-top: 200px;
+}
+
+#section5 {
+    /* background-color: white; */
+    height: 1200px;
+    margin-bottom: 200px;
+}
+
+
+.button1 {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(199, 199, 199);
+    border-radius: 5px;
+    margin-left: 5px;
+    border: none;
+
+}
+
+.button {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(196, 196, 196);
+    border-radius: 5px;
+    border: none;
+    color: rgb(120, 134, 107);
+}
+
+
+#main-title {
+    color: rgb(120, 134, 107);
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+    left: 20%;
+}
+
+.fixed-top {
+    position: relative;
+    top: -80px;
+    left: 5%;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.profile-h1 {
+    position: relative;
+    top: 120px;
+}
+
+#grobal-nav {
+    float: right;
+    position: absolute;
+    right: 300px;
+    top: 120px;
+    display: flex;
+    justify-content: right;
+
+}
+
+#grobal-nav a {
+    text-decoration: none;
+    color: rgb(102, 102, 102);
+    font-weight: bold;
+    margin-left: 2rem;
+}
+
+.itr {
+    margin: 20px;
+}
+
+
+/* 메인페이지 */
+#mainpage-logo {
+
+    display: flex;
+    justify-content: left;
+
+    /* 수정 가능 */
+    position: relative;
+    top: 50px;
+
+}
+
+#main-hr {
+    position: relative;
+    border: 1px solid black;
+    top: 65px;
+}
+
+/* 메인페이지 레이아웃 */
+#main-gird {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    border: 1px solid rgb(208, 142, 0);
+}
+
+#main-container {
+    position: relative;
+    top: 100px;
+
+    display: grid;
+
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 300px 300px;
+    gap: 200px;
+
+    left: 20%;
+
+}
+
+#main-container2 {
+    position: relative;
+    top: 100px;
+
+    display: grid;
+
+    grid-template-columns: 250px 250px 250px;
+    grid-template-rows: 300px 300px;
+    gap: 200px;
+
+    left: 15%;
+
+}
+
+
+
+/* 카테고리/////////////////////////////////////////////////////// */
+#KategorieTitle {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: rgb(77, 93, 83);
+}
+
+
+.btn-toolbar {
+    display: flex;
+    justify-content: center;
+}
+
+/* .btn-outline-secondary{
+        background-color: rgb(185, 188, 175);
+    } */
+
+.btn-group .btn img {
+    width: 50px;
+    height: 50px;
+    /* margin-left: 15px;
+    margin-top: 15px; */
+}
+
+
+
+.btn-toolbar {
+    display: grid;
+
+    grid-template-columns: 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px;
+    /* grid-template-rows: 100px; */
+    gap: 5px;
+
+    justify-content: center;
+}
+
+/* 슬라이드 */
+.sildeTitle {
+    text-align: left;
+    /* margin-left: -50px;
+        position: relative;
+        top: -20px;
+        font-size: 3rem;
+        color: rgb(0, 0, 0); */
+}
+
+.sildeSubTitle {
+    text-align: left;
+    /* margin-left: -50px;
+        position: relative;
+        top: -20px;
+        font-size: 2rem;
+        color: rgb(0, 0, 0); */
+}
+
+#carouselExampleDark {
+    border: 1px solid gray;
+    margin: 0 auto;
+    max-width: 60%;
+    position: relative;
+    top: 150px;
+}
+
+/* 슬라이드 별 설명   */
+.slideMsg1,
+.slideMsg2,
+.slideMsg3,
+.slideMsg6,
+.slideMsg7 {
+    color: white;
+    position: relative;
+    top: -30px;
+    font-size: 2rem;
+}
+
+.slideDetail1,
+.slideDetail2,
+.slideDetail3,
+.slideDetail6,
+.slideDetail7 {
+    color: white;
+    position: relative;
+    top: -20px;
+    font-size: 1rem;
+}
+
+.slideMsg4,
+.slideMsg5 {
+    color: black;
+    position: relative;
+    top: -30px;
+    font-size: 2rem;
+}
+
+.slideDetail4,
+.slideDetail5 {
+    color: black;
+    position: relative;
+    top: -20px;
+    font-size: 1rem;
+}
+
+/* 콘텐츠 설명 */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+
+.test_obj1 {
+    position: relative;
+    animation: fadeInLeft 3s;
+    display: flex;
+    justify-content: center;
+    left: -10%;
+    /* height: 400px; */
+}
+
+.test_obj2 {
+    position: relative;
+    animation: fadeInRight 3s;
+    display: flex;
+    justify-content: center;
+    /* height: 400px; */
+    left: 10%;
+
+}
+
+.test_obj3 {
+    position: relative;
+    animation: fadeInLeft 3s;
+    display: flex;
+    justify-content: center;
+    /* height: 400px; */
+    left: -10%;
+
+}
+
+
+.card {
+    margin-top: 50px;
+}
+
+.row {
+    height: 300%;
+}
+
+.col-md-4 img {
+    height: 300px;
+}
+
+/* //////////////////////////////////////////////////// */
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+#menuImg {
+    position: relative;
+    top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown {
+    position: relative;
+    top: 10%;
+    text-align: center;
+}
+
+/* 네비게이션 */
+a .menuList {
+    position: relative;
+    top: 5%;
+    display: flex;
+    margin: auto;
+    margin-top: 25%;
+
+}
+
+/* 아이콘 */
+.kategorieImg {
+    width: 80px;
+    height: 80px;
+}
+
+#mainTbl {
+    width: 50%;
+    position: relative;
+    top: -150px;
+    margin: 0 auto;
+    background-color: rgb(222, 222, 222);
+}
+
+
+.kategorieElements {
+    width: 100px;
+    height: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
+.state {
+    position: absolute;
+    left: 75%;
+    /* 버튼 반만 링크이동 가능 수정해야함 */
+    z-index: 30;
+}
+
+
+.container {
+    margin-left: 55%;
+    width: 400px;
+}
+
+/* 박스 */
+
+.box {
+    /* background-color: rgb(229,230,235); */
+
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+#thead {
+    border-color: gray;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    text-align: center;
+}
+
+
+#indexBtn {
+    display: flex;
+    justify-content: center;
+}
+
+
+.box-button {
+    position: relative;
+    background-color: black;
+    font-size: 20px;
+    top: 60%;
+    color: white;
+    border-radius: 10px;
+}
+
+
+.no-underline {
+    text-decoration: none;
+}
+
+/* content */
+
+.newCt {
+    margin-left: 25%;
+}
+.txtCenter{
+    text-align: center;
+}
+
+#comment,
+#contentBtn {
+    margin: auto;
+    text-align: center;
+}
+
+#content {
+    margin-left: 20%;
+    margin-top: 150px;
+    width: 100%;
+}
+
+#contentBBS {
+    margin-top: 30px;
+    margin: auto;
+    width: 100%;
+
+    border-radius: 10px;
+}
+
+.sbBtn{
+    margin-bottom: 5%;
+}
+
+#comment {
+    margin-top: 50px;
+
+}
+
+#txtTitle {
+    margin-right: 10%;
+    width: 60%;
+}
+
+
+#txtContent {
+    border: 0;
+    width: 100%;
+    height: 150px;
+}
+
+#txtContent1{
+    width: 60%;
+    height: 150px;
+}
+
+#cmWrite{
+    width: 30%;
+    margin-top: 30px;
+    }
+    
+    .btnCM{
+    /* background-color: rgb(120, 134, 107); */
+    border-color: rgb(120, 134, 107);
+    border-radius: 5px;
+    border: none;
+    color: rgb(120, 134, 107);
+    }
+    
+
+
+
+.title,
+.btn {
+    text-align: center;
+}
+
+.rcbtn {
+    position: relative;
+    top: 150px;
+}
+
+#rcSpace {
+    margin-top: 60px;
+    text-align: center;
+}
+
+#rcSpaceTitle {
+    color: gray;
+}
+
+/* 만남의 광장 */
+/* 만남의 광장 타이틀 */
+#meetSpace {
+    position: relative;
+    top: 100px;
+    text-align: center;
+    color: rgb(75, 75, 75);
+}
+
+#tblBBS {
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10%;
+    background-color: white;
+}
+
+.tblby>tr {
+    height: 40px;
+}
+
+/* 만남장소 */
+
+
+.rcimg {
+    border-radius: 10px;
+    margin-top: 5%;
+    width: 400px;
+    height: 300px;
+}
+
+#btw {
+    margin-left: 50%;
+}
+
+/* 만남 후기 */
+
+
+/* 푸터 */
+/* footer {
+    background-color: rgb(143, 151, 121);
+}
+
+
+#footerTitle {
+    text-align: left;
+    font-size: 3rem;
+}
+
+#footerMsg {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-left: 80px;
+
+} */
+
+footer img {
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+#footerIcon {
+    display: flex;
+    justify-content: left;
+    position: relative;
+    left: -80px;
+} 
+
+#footerInfo {
+    text-align: right;
+    margin-right: 100px;
+
+} 
+
+
+
+/* 로그인 */
+
+
+/* 회원가입 */
+#Join-title {
+    color: rgb(120, 134, 107);
+    font-size: 3rem;
+    font-weight: bold;
+    position: relative;
+}
+
+#joinNav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
+
+/* 아이디찾기 */
+.findid {
+    border: 1px solid gray;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 10px;
+    height: 300px;
+    text-align: center;
+}
+
+.logo-flex {
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.Title {
+    margin-top: 15%;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    color: rgb(120, 134, 107);
+}
+
+.footerTop{
+    font-size: 50px;
+}
+
+.footerbo{
+    font-size: large;
+}

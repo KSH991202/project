@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.board.mrvbbs.MrvbbsDAO">
+
+<resultMap type="com.study.board.mrvbbs.MrvbbsTblVO" id="mrvbbsMap">
+    <result property="rowNum"   column="RN" />
+    <result property="userId"   column="U_ID" />
+    <result property="seq"      column="MRV_SEQ" />
+    <result property="title"    column="MRV_TITLE" />
+    <result property="content"  column="MRV_CONTENT"/>
+    <result property="divi"     column="HB_DIVI"/>
+    <result property="regDate"  column="MRV_DATE"/>
+</resultMap>
+
+<select id="selectMrvbbsRowCount" resultType="integer">
+    SELECT COUNT(*) FROM MRV_TBL    
+</select>
+
+<select id="selectMrvbbsList" resultMap="mrvbbsMap">
+    SELECT * FROM (SELECT rownum RN, Q.* FROM (SELECT * FROM MRV_TBL ORDER BY MRV_DATE)  Q ORDER BY RN DESC)
+    WHERE RN <![CDATA[>=]]> (SELECT max(rowNum) - (#{page} + 1) * #{rowsPerPage} + 1 FROM MRV_TBL) AND 
+          RN <![CDATA[<=]]> (SELECT max(rowNum) - #{page} * #{rowsPerPage} FROM MRV_TBL) 
+</select>
+
+
+<select id="selectMrvbbsContent" resultMap="mrvbbsMap">
+    SELECT * FROM MRV_TBL WHERE U_ID = #{userId} AND MRV_SEQ = #{seq}
+</select>
+
+<update id="updateMrvbbsContent">
+    UPDATE MRV_TBL SET MRV_TITLE = #{title}, MRV_CONTENT = #{content} 
+    WHERE U_ID = #{userId} AND MRV_SEQ = #{seq}
+</update>
+
+<delete id="deleteMrvbbsContent">
+    DELETE FROM MRV_TBL 
+    WHERE U_ID = #{userId} AND MRV_SEQ = #{seq}
+</delete>
+
+<!-- 게시물 추가 -->
+<insert id="insertMrvbbsContent">
+
+    INSERT INTO MRV_TBL(U_ID, MRV_SEQ, MRV_TITLE, MRV_CONTENT, MRV_DATE, HB_DIVI)
+        VALUES (#{userId}, (SELECT NVL(max(MRV_SEQ), 0) + 1 AS SEQ FROM MRV_TBL WHERE U_ID = #{userId}) , #{title}, #{content}, sysdate, #{divi})
+</insert>
+
+<select id="selectMrvbbsSearchList" resultMap="mrvbbsMap">
+    SELECT * FROM MRV_TBL WHERE
+            <choose>
+                <when test="searchField == 'mrvbbsTitle'">
+                    MRV_TITLE LIKE '%' || #{searchKeyword} || '%' ORDER BY MRV_DATE DESC
+                </when>
+                <when test="searchField == 'userID'">
+                    U_ID LIKE '%' || #{searchKeyword} || '%' ORDER BY MRV_DATE DESC
+                </when>
+            </choose>
+    </select>
+
+</mapper>

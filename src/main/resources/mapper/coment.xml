@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.board.cm.CmDAO">
+
+<resultMap type="com.study.board.cm.CmTblVO" id="cmMap">
+    <result property="rowNum"       column="RN" />
+    <result property="userId"       column="U_ID" />
+    <result property="cmSeq"        column="CM_SEQ"/>
+    <result property="mbSeq"        column="MB_SEQ"/>
+    <result property="cmContent"    column="CM_CONTENT"/>
+    <result property="cmDate"       column="CM_DATE"/>
+    <result property="writer"       column="WRITER"/>
+
+</resultMap>
+
+<select id="selectcmRowCount" resultType="integer">
+    SELECT COUNT(*) FROM CM_TBL
+</select>
+
+<select id="selectcmList" resultMap="cmMap">
+    SELECT * FROM (SELECT rownum RN, CM_TBL.* FROM CM_TBL WHERE MB_SEQ = #{mbSeq} AND WRITER = #{writer} ORDER BY CM_DATE DESC)
+    WHERE RN <![CDATA[>=]]> (SELECT max(rowNum) - (#{page} + 1) * #{commentPage} + 1 FROM CM_TBL) AND 
+          RN <![CDATA[<=]]> (SELECT max(rowNum) - #{page} * #{commentPage} FROM CM_TBL)
+</select>
+
+
+<select id="selectcmContent" resultMap="cmMap">
+    SELECT * FROM CM_TBL WHERE U_ID = #{userId} AND CM_SEQ = #{cmSeq}
+</select>
+
+<update id="updatecmContent">
+    UPDATE CM_TBL SET CM_CONTENT = #{content} 
+    WHERE U_ID = #{userId} AND CM_SEQ = #{cmSeq}
+</update>
+
+<insert id="insertComent">
+    INSERT INTO CM_TBL (U_ID, CM_SEQ, MB_SEQ, CM_CONTENT, CM_DATE, WRITER)
+    VALUES (#{userId},
+    (SELECT NVL(max(CM_SEQ), 0) + 1 AS SEQ FROM CM_TBL WHERE U_ID = #{userId})
+     , #{mbSeq}, #{cmContent}, sysdate, #{writer})
+</insert>
+
+<delete id="deletecmContent">
+    DELETE FROM CM_TBL 
+    WHERE U_ID = #{userId} AND CM_SEQ = #{cmSeq}
+</delete>
+
+</mapper>

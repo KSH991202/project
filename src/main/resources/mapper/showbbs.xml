@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.board.sbbs.SbbsDAO">
+
+<resultMap type="com.study.board.sbbs.SbbsTblVO" id="sbbsMap">
+    <result property="rowNum"   column="RN" />
+    <result property="userId"   column="U_ID" />
+    <result property="seq"      column="SB_SEQ" />
+    <result property="title"    column="SB_TITLE" />
+    <result property="content"  column="SB_CONTENT"/>
+    <result property="divi"     column="HB_DIVI"/>
+    <result property="regDate"  column="SB_DATE"/>
+    <result property="fileCode"  column="FILE_CODE"/>
+
+</resultMap>
+
+<select id="selectSbbsRowCount" resultType="integer">
+    SELECT COUNT(*) FROM SB_TBL    
+</select>
+
+<select id="selectSbbsList" resultMap="sbbsMap">
+    SELECT * FROM (SELECT rownum RN, SB_TBL.* FROM SB_TBL WHERE HB_DIVI = #{divi} ORDER BY SB_DATE DESC) 
+    WHERE RN <![CDATA[>=]]> ((SELECT COUNT(*) FROM SB_TBL WHERE HB_DIVI = #{divi}) - (#{page} + 1) * #{rowsPerPage} + 1) AND 
+          RN <![CDATA[<=]]> ((SELECT COUNT(*) FROM SB_TBL WHERE HB_DIVI = #{divi}) - #{page} * #{rowsPerPage})    
+</select>
+
+<select id="selectSbbsContent" resultMap="sbbsMap">
+    SELECT * FROM SB_TBL WHERE U_ID = #{userId} AND SB_SEQ = #{seq} AND HB_DIVI = #{divi}
+</select>
+
+<update id="updateSbbsContent">
+    UPDATE SB_TBL SET SB_CONTENT = #{content} 
+    WHERE U_ID = #{userId} AND SB_SEQ = #{seq}
+</update>
+
+<insert id="insertSbbsContent">
+    INSERT INTO SB_TBL(U_ID, SB_SEQ, SB_TITLE, SB_CONTENT, SB_DATE, HB_DIVI
+    <if test="fileCode!=null">
+    ,FILE_CODE
+    </if>
+    )
+    VALUES (#{userId}, (SELECT NVL(max(SB_SEQ), 0) + 1 FROM SB_TBL WHERE U_ID = #{userId}), 
+                #{title}, #{content}, sysdate, #{divi}
+                <if test="fileCode!=null">
+                , #{fileCode}
+                </if>
+                )
+</insert>
+
+<delete id="deleteSbbsContent">
+    DELETE FROM SB_TBL 
+    WHERE U_ID = #{userId} AND SB_SEQ = #{seq}
+</delete>
+
+</mapper>
